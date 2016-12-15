@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    body(ng-controller='UserCO')
+        ul
+            li
+                | First Name : {{user.firstname}}
+            li
+                | Last Name : {{user.lastname}}
+            li
+                | Email : {{user.username}}
+            li
+                | Biography : {{user.bio}}

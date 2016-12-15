@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  body(ng-controller='GroupC')
+      .container
+
+        .jumbotron.text-center
+          h1
+            | Groups in MeetApp 
+            span.label.label-info {{ groups.length }}
+
+        #group-list.row
+          .col-md-8.col-sm-offset-2
+
+            table.table.table-hover
+                thead
+                  tr
+                    th #
+                    th Group name
+                    th Description
+                    th # of Members
+                    th Actions
+                tbody
+                  tr(ng-repeat='group in groups')
+                    th(scope='row') {{$index +1}}
+                    td {{ group.name }}
+                    td {{ group.description }}
+                    td {{ group.members.length }}
+                    td
+                      a(ng-href='/groups/{{group._id}}', ng-click='sendId(group._id)') View group
+        br
+        if(user)
+          a(href="/groups/create-group")
+            button.btn.btn-primary(type="button") Create new group
+        if(!user)
+          div Login to perform actions

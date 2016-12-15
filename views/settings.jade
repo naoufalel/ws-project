@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  body(ng-controller='UserC')
+    .container
+      h1 Update your profile
+      p.lead Say something worthwhile here.
+      br
+      form(role='form', style='max-width: 300px;')
+        .form-group
+          input.form-control(type='text', placeholder='Enter your First Name...', ng-model='user.firstname' )
+        .form-group
+          input.form-control(type='text', value="#{user.lastname}", placeholder='Enter your Last Name...', ng-model='user.lastname')
+        .form-group
+          input.form-control(type='text', value="#{user.bio}", placeholder='Enter a quick bio...', ng-model='user.bio')
+        .form-group
+            input.form-control(type='text', value="#{user.username}", placeholder='Enter Username' disabled)
+        
+        button.btn.btn-success(type='submit', ng-click='updateProfile()') Submit
+        &nbsp;
+        a(href='/users/me')
+          button.btn.btn-primary(type="button") Cancel
+      br

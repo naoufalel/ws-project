@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    body(ng-controller='GroupCO')
+        ul
+            li
+                | Group Name : {{group.name}}
+            li
+                | Group Description : {{group.description}}
+            br        
+            tr
+                th.span3.big Members
+                td
+                    ul(ng-repeat='member in group.members')
+                        li 
+                            a(ng-href='/users/{{member.user_id}}', ng-click='sendId(member.user_id)') {{ member.username }}
+            br
+            br        
+            tr
+                th.span3 Comments
+                td
+                    ul(ng-repeat='comment in group.comments')
+                        li {{ comment.text }} By {{comment.username}}
+        br
+        br
+        if(user)
+
+            form(style='max-width: 300px;')
+                .form-group
+                    input.form-control(type='text', placeholder='Enter A comment...', ng-model='group.gcomment')
+                button.btn.btn-default(type='submit', ng-click='addComment()') Add comment
+            
+            br
+            br
+            br
+
+            a(href='/groups/update/{{group._id}}')
+                    button.btn.btn-info(type="button") Update Info 
+            &nbsp;
+            button.btn.btn-danger(type="button", ng-click='deleteGroup()') Delete Group
+        if(!user)
+            p Login to perfom actions on the group

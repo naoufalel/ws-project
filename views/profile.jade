@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    body(ng-controller="UserC")
+        if(user)
+            | hello
+            ul
+                li
+                    | First Name : #{user.firstname}
+                li
+                    | Last Name : #{user.lastname}
+                li
+                    | Email : #{user.username}
+                li
+                    | Biography : #{user.bio}
+            a(href='/users/update')
+                button.btn.btn-info(type="button") Update Info    
+            &nbsp; 
+            button.btn.btn-danger(type="button", ng-click='deleteUser()') Delete Account

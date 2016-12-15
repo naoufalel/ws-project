@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  body(ng-controller='UserC')
+    .container
+          .jumbotron.text-center
+            h1
+              | All users 
+              span.label.label-info {{ users.length }}
+          #user-list.row
+            .col-md-8.col-sm-offset-2
+              table.table.table-hover
+                  thead
+                    tr
+                      th #
+                      th First Name
+                      th Last Name
+                  tbody
+                    tr(ng-repeat='user in users')
+                      th(scope='row') {{$index +1}}
+                      td {{ user.firstname }}
+                      td {{ user.lastname }}
+                      td
+                        a(ng-href='/users/{{user._id}}', ng-click='sendId(user._id)') Check Profile 
+
