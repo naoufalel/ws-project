@@ -140,7 +140,7 @@ router.route('/groups/:group_id')
                     if (err)
                         res.send(err);
 
-                    res.json({ message: 'Account updated!' });
+                    res.json({ message: 'Group updated!' });
                 });
 
         });
